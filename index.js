@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
+app.use(express.static('build'))
+
+
 // used to give a type to recived json, otherwise it will be
 // undefined.
 app.use(express.json());
@@ -100,7 +103,7 @@ app.use(unknownEndpoint);
 
 
 // PaaS services configure the application port based on that environment variable.
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
