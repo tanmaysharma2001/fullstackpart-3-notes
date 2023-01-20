@@ -1,10 +1,11 @@
 // const http = require("http");
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const Note = require("./models/note");
 
-app.use(express.static('build'))
-
+app.use(express.static("build"));
 
 // used to give a type to recived json, otherwise it will be
 // undefined.
@@ -48,7 +49,9 @@ app.get("/", (request, response) => {
 });
 
 app.get("/api/notes", (request, response) => {
-  response.json(notes);
+  Note.find({}).then((notes) => {
+    response.json(notes);
+  });
 });
 
 app.get("/api/notes/:id", (request, response) => {
@@ -100,7 +103,6 @@ const unknownEndpoint = (request, response) => {
 };
 
 app.use(unknownEndpoint);
-
 
 // PaaS services configure the application port based on that environment variable.
 const PORT = process.env.PORT || 3001;
