@@ -1,10 +1,10 @@
-require('dotenv').config()
+require("dotenv").config();
 
 const mongoose = require("mongoose");
 
 mongoose.set("strictQuery", false);
 
-const url = process.env.MONGODB_URI
+const url = process.env.MONGODB_URI;
 
 console.log("connecting to", url);
 
@@ -18,8 +18,11 @@ mongoose
   });
 
 const noteSchema = new mongoose.Schema({
-  content: String,
-  date: Date,
+  content: {
+    type: String,
+    minLength: 5,
+    required: true,
+  },
   important: Boolean,
 });
 

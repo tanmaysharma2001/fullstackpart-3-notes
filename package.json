@@ -7,7 +7,9 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:ui": "rm -rf build && cd ../part2-frontend-notes/ && npm run build && cp -r build ../part3-backend-notes"
+    "build:ui": "rm -rf build && cd ../part2-frontend-notes/ && npm run build && cp -r build ../part3-backend-notes",
+    "lint": "eslint ."
+
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +20,7 @@
     "mongoose": "^6.8.4"
   },
   "devDependencies": {
+    "eslint": "^8.32.0",
     "nodemon": "^2.0.20"
   }
 }
